@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="4sp"
+        android:lines="1"
         android:gravity="center"
         android:textStyle="bold"
         tools:text="100" />
