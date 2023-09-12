@@ -2,6 +2,7 @@ package com.food.automativelayoutmanager
 
 import android.graphics.Rect
 import android.view.View
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.max
 import kotlin.math.min
@@ -236,4 +237,13 @@ class HorizontalGridLayoutManager(
         }
     }
 
+    override fun smoothScrollToPosition(
+        recyclerView: RecyclerView,
+        state: RecyclerView.State?,
+        position: Int
+    ) {
+        val smoothScroller = LinearSmoothScroller(recyclerView.context)
+        smoothScroller.targetPosition = position
+        startSmoothScroll(smoothScroller)
+    }
 }

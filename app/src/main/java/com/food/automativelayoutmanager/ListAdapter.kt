@@ -25,8 +25,9 @@ class ListAdapter(private val onItemDeleted: (position: Int) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
+        val itemView = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.item_list, parent, false)
 
         return ListHolder(itemView, onItemDeleted)
     }
