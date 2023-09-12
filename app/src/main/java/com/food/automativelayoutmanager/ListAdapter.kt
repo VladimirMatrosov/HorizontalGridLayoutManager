@@ -5,7 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.food.automativelayoutmanager.entity.Item
 
-class ListAdapter : RecyclerView.Adapter<ListHolder>() {
+class ListAdapter(private val onItemDeleted: (position: Int) -> Unit) :
+    RecyclerView.Adapter<ListHolder>() {
     private var items: List<Item> = emptyList()
 
     fun setItems(items: List<Item>) {
@@ -13,11 +14,21 @@ class ListAdapter : RecyclerView.Adapter<ListHolder>() {
         notifyDataSetChanged()
     }
 
+    fun addItem(items: List<Item>) {
+        this.items = items
+        notifyItemInserted(0)
+    }
+
+    fun removeItem(items: List<Item>, position: Int) {
+        this.items = items
+        notifyItemRemoved(position)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
 
-        return ListHolder(itemView)
+        return ListHolder(itemView, onItemDeleted)
     }
 
     override fun getItemCount(): Int {

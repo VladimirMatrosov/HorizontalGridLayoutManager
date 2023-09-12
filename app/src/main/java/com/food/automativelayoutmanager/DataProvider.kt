@@ -2,13 +2,20 @@ package com.food.automativelayoutmanager
 
 import com.food.automativelayoutmanager.entity.Item
 
-class DataProvider {
+class DataProvider(size: Int) {
+    private val items = MutableList(size) { index ->
+        Item(index + 1)
+    }
 
-    fun getItems(size: Int): List<Item> {
-        val items = Array(size) { index ->
-            Item(index + 1)
-        }
+    fun getItems(): List<Item> {
+        return items
+    }
 
-        return items.toList()
+    fun addItem() {
+        items.add(0, Item(items.size + 1))
+    }
+
+    fun removeItem(position: Int) {
+        items.removeAt(position)
     }
 }
