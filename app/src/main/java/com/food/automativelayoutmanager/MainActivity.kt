@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         adapter = ListAdapter()
 
         findViewById<RecyclerView>(R.id.list)?.let { listView ->
-            listView.layoutManager = HorizontalGridLayoutManager(columnCount = 5, rowCount = 2)
+            listView.layoutManager = HorizontalGridLayoutManager(columnCount = 5, rowCount = 2, reverseLayout = true)
             listView.adapter = adapter
             adapter.setItems(dataProvider.getItems(100))
         }
